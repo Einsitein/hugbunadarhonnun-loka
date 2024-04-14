@@ -151,7 +151,8 @@ public class KubburController {
         if (fxOngoing.getText().equals("Leikur í gangi")) {
             return;
         }
-        ViewSwitcher.getCurrentUser().setPeningur(ViewSwitcher.getCurrentUser().getPeningur() + kubbur.getStig() - 5);
+        // ViewSwitcher.getCurrentUser().setPeningur(ViewSwitcher.getCurrentUser().getPeningur()
+        // + kubbur.getStig() - 5);
         ViewSwitcher.switchTo(View.HEIM);
     }
 

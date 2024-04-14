@@ -36,12 +36,12 @@ public class HeimaController {
         if (ViewSwitcher.getCurrentUser() != null) {
             fxCoins.setText("Coins: " + String.valueOf(ViewSwitcher.getCurrentUser().getPeningur()));
             fxUser.setText(ViewSwitcher.getCurrentUser().getNotendaNafn());
-            fxKubbur.setDisable(false);
+            // fxKubbur.setDisable(false);
             fxBud.setDisable(false);
             fxInnskraning.setDisable(true);
             fxNyskraning.setDisable(true);
         } else {
-            fxKubbur.setDisable(true);
+            // fxKubbur.setDisable(true);
             fxBud.setDisable(true);
             fxBud.setVisible(false);
             fxInnskraning.setDisable(false);
@@ -102,7 +102,8 @@ public class HeimaController {
 
     @FXML
     protected void onKubburPressed(ActionEvent actionEvent) {
-        ViewSwitcher.getCurrentUser().setPeningur(ViewSwitcher.getCurrentUser().getPeningur() - 10);
+        // ViewSwitcher.getCurrentUser().setPeningur(ViewSwitcher.getCurrentUser().getPeningur()
+        // - 10);
         ViewSwitcher.switchTo(View.KUBBUR);
         // PauseTransition pause = new PauseTransition(Duration.seconds(5));
         // pause.setOnFinished(event -> ViewSwitcher.switchTo(View.KUBBUR));
