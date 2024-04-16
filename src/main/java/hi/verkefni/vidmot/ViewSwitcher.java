@@ -2,86 +2,52 @@ package hi.verkefni.vidmot;
 
 import hi.verkefni.vinnsla.Notandi;
 import hi.verkefni.vinnsla.Notendur;
+import hi.verkefni.vinnsla.UserFactory;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ViewSwitcher {
 
-    private static final Map<View, Parent> cache = new HashMap<>();
+    private Scene scene;
 
-    private static Scene scene;
+    public Notendur notendur = new Notendur();
+    public Notandi currentUser;
 
-    public static Notendur notendur = new Notendur();
-    public static Notandi currentUser; // = new Notandi("Guest", "1234");
+    private static ViewSwitcher instance = null;
 
-    public static void newUser(String s, String t){
-        Notandi u = new Notandi(s,t);
+    private ViewSwitcher() {
+        // private constructor
+    }
+
+    public static ViewSwitcher getInstance() {
+        if (instance == null) {
+            instance = new ViewSwitcher();
+        }
+        return instance;
+    }
+
+    public void newUser(String s, String t) {
+        Notandi u = UserFactory.createUser(s, t);
         notendur.add(u);
         currentUser = u;
     }
 
-    public static void setCurrentUser(Notandi u){
+    public void setCurrentUser(Notandi u) {
         currentUser = u;
     }
 
-    public static Notandi getCurrentUser(){
+    public Notandi getCurrentUser() {
         return currentUser;
     }
 
-
-    /**
-     * Setur núverandi senu í ViewSwitcher sem scene - enginn breyting á glugga
-     *
-     * @param scene senan
-     */
-    public static void setScene(Scene scene) {
-        ViewSwitcher.scene = scene;
+    public void setScene(Scene scene) {
+        this.scene = scene;
     }
 
-    /**
-     * Skipta yfir í senu sem er lýst í view. Breytum örlítið þ.a. við loadum aðeins
-     * frá cache ef við erum að fara
-     * aftur á heimasíðuna en ekki inn í playlista.
-     *
-     * @param view
-     */
-    // public static void switchTo(View view) {
-    // if (scene == null) {
-    // System.out.println("No scene was set");
-    // return;
-    // }
-
-    // try {
-    // Parent root;
-    // // fletta upp í skyndiminni
-    // if (cache.containsKey(view) && view.getFileName().equals("heima-view.fxml"))
-    // {
-    // System.out.println("Loading from cache");
-
-    // root = cache.get(view);
-    // // annars lesa úr .fxml skrá
-    // } else {
-    // System.out.println("Loading from FXML");
-    // // lesa inn .fxml skrána og rótin verður root
-    // root = FXMLLoader.load(
-    // ViewSwitcher.class.getResource(view.getFileName()));
-    // // geyma í skyndimynni - tengja saman view og root
-    // cache.put(view, root);
-    // }
-
-    // // setja rótina í núverandi senu
-    // scene.setRoot(root);
-
-    // } catch (IOException e) {
-    // e.printStackTrace();
-    // }
-    // }
-    public static void switchTo(View view) {
+    public void switchTo(View view) {
         if (scene == null) {
             System.out.println("No scene was set");
             return;

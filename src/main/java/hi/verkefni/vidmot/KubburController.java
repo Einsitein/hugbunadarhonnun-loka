@@ -12,11 +12,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import java.util.Arrays;
+import javafx.scene.control.Alert;
 
 /**
  * Controller fyrir forritið sem bregst við atburðum frá notenda.
  *
- * @author Jóhannes Reykdal Einarsson og Einar Andri Víðisson
+ * @author Einar Andri Víðisson
  */
 
 public class KubburController {
@@ -33,9 +34,9 @@ public class KubburController {
 
     private Button[] visited = new Button[9]; // Heldur utan hvort sé búið að giska rétt á reitinn eða ekki.
 
-    private String[] validTala = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }; // Fylki sem heldur utan um leyfilegar
-                                                                                  // tölur sem hægt er að slá inn í
-                                                                                  // textasviðið.
+    private String[] validTala = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+
+    private ViewSwitcher viewSwitcher = ViewSwitcher.getInstance(); // Tengir viðmótið við vinnsluna
 
     private Kubbur kubbur = new Kubbur(3, 3); // Býr til spilaborðið þ.e. hlut kubbur af klasanum Kubbur.
 
@@ -66,8 +67,6 @@ public class KubburController {
             fxTala.clear();
             return;
         }
-
-        validTala = Arrays.stream(validTala).filter(t -> !t.equals(fxTala.getText())).toArray(String[]::new);
 
         fxBord.setDisable(false);
         for (Node b : fxBord.getChildren()) {
@@ -114,6 +113,9 @@ public class KubburController {
             return;
         }
         fxTala.setDisable(true);
+
+        validTala = Arrays.stream(validTala).filter(t -> !t.equals(fxTala.getText())).toArray(String[]::new);
+
         Button reitur = (Button) actionEvent.getSource(); // hvaða reitur var valinn á borðinu
         int i = GridPane.getRowIndex(reitur);
         int j = GridPane.getColumnIndex(reitur);
@@ -125,7 +127,7 @@ public class KubburController {
             fxTala.setDisable(false);
             fxTala.clear();
             if (kast < 3) {
-                kubbur.setStig((3 - kast));
+                kubbur.changeStig((3 - kast));
             }
             visited[kubbur.fjoldiProperty().getValue()] = reitur;
             kubbur.setFjoldi();
@@ -133,6 +135,9 @@ public class KubburController {
 
         } else {
             kast++;
+        }
+        if (kubbur.fjoldiProperty().getValue() == 9) {
+            fxTala.setDisable(true);
         }
     }
 
@@ -148,12 +153,17 @@ public class KubburController {
 
     @FXML
     protected void tilBaka(ActionEvent actionEvent) {
-        if (fxOngoing.getText().equals("Leikur í gangi")) {
-            return;
+        if (kubbur.fjoldiProperty().getValue() == 0 && !fxTala.isDisabled()) {
+            viewSwitcher.switchTo(View.HEIM);
+        } else if (kubbur.fjoldiProperty().getValue() == 9) {
+            viewSwitcher.getCurrentUser()
+                    .setPeningur(viewSwitcher.getCurrentUser().getPeningur() + kubbur.getStig());
+            viewSwitcher.switchTo(View.HEIM);
+        } else {
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setHeaderText("Ekki hægt að hætta");
+            a.setContentText("Leikur er í gangi");
+            a.show();
         }
-        // ViewSwitcher.getCurrentUser().setPeningur(ViewSwitcher.getCurrentUser().getPeningur()
-        // + kubbur.getStig() - 5);
-        ViewSwitcher.switchTo(View.HEIM);
     }
-
 }

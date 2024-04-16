@@ -7,18 +7,9 @@ public class Kubbur {
     /**
      * Klasinn Kubbur sem "býr" til spilaborðið.
      * 
-     * @author Jóhannes Reykdal Einarsson og Einar Andri Víðisson
+     * @author Einar Andri Víðisson
      */
-    private final String[] nums = { "einn", "tveir", "thrir", "fjorir", "fimm", "sex", "sjo", "atta", "niu" };// heldur
-                                                                                                              // utan um
-                                                                                                              // heitin
-                                                                                                              // á
-                                                                                                              // myndunum
-                                                                                                              // þ.e.
-                                                                                                              // nums[i-1]
-                                                                                                              // hefru
-                                                                                                              // nafnið
-    // á mynd i
+    private final String[] nums = { "einn", "tveir", "thrir", "fjorir", "fimm", "sex", "sjo", "atta", "niu" };
     private int radir;// tilviksbreyta fyrir fjölda raða á spilaborðinu
     private int dalkar;// tilviksbreyta fyrir fjölda dálka á spilaborðinu
     private Stykki[][] bord;// spilaborðið þ.e. tvívítt fylki af klasanum Stykki
@@ -37,8 +28,8 @@ public class Kubbur {
         this.radir = radir;
         this.dalkar = dalkar;
         frumstillakubb(this.radir, this.dalkar);
-        stig = new SimpleStringProperty("0");
-        stigint = 0;
+        stig = new SimpleStringProperty("-23");
+        stigint = -23;
         fjoldi = new SimpleIntegerProperty(0);
     }
 
@@ -65,7 +56,7 @@ public class Kubbur {
      * 
      * @param s hve mikið á að bæta við stig
      */
-    public void setStig(int s) {
+    public void changeStig(int s) {
         int x = Integer.parseInt(stig.getValue()) + s;
         stig.set("" + x);
         stigint = x;

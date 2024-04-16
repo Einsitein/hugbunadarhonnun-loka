@@ -5,6 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Alert;
+import hi.verkefni.vinnsla.CoinService;
 
 public class HeimaController {
     private Notandi user;
@@ -24,6 +26,8 @@ public class HeimaController {
     @FXML
     private Button fxLogout;
 
+    private ViewSwitcher viewSwitcher = ViewSwitcher.getInstance();
+
     private static final String SPURNING = "Má bjóða þér að kaupa meira?";
     private static final String TILKYNNING = "Peningaupphæðin þín er orðin ansi lág...";
     private static final String ILAGI = "Ja!";
@@ -33,86 +37,60 @@ public class HeimaController {
 
     public void initialize() {
         fxKubbur.getStyleClass().add("kubburOut");
-        if (ViewSwitcher.getCurrentUser() != null) {
-            fxCoins.setText("Coins: " + String.valueOf(ViewSwitcher.getCurrentUser().getPeningur()));
-            fxUser.setText(ViewSwitcher.getCurrentUser().getNotendaNafn());
-            // fxKubbur.setDisable(false);
-            fxBud.setDisable(false);
-            fxInnskraning.setDisable(true);
-            fxNyskraning.setDisable(true);
+        if (viewSwitcher.getCurrentUser() != null) {
+            fxCoins.setText("Coins: " + String.valueOf(viewSwitcher.getCurrentUser().getPeningur()));
+            fxUser.setText(viewSwitcher.getCurrentUser().getNotendaNafn());
+            fxKubbur.setDisable(false);
+            fxBud.setVisible(true);
+            fxInnskraning.setVisible(false);
+            fxNyskraning.setVisible(false);
+            fxLogout.setVisible(true);
         } else {
-            // fxKubbur.setDisable(true);
-            fxBud.setDisable(true);
+            fxKubbur.setDisable(true);
             fxBud.setVisible(false);
-            fxInnskraning.setDisable(false);
-            fxNyskraning.setDisable(false);
+            fxInnskraning.setVisible(true);
+            fxNyskraning.setVisible(true);
+            fxLogout.setVisible(false);
         }
     }
 
     @FXML
     protected void onLogout(ActionEvent actionEvent) {
-        System.out.println("logout");
-    }
-
-    @FXML
-    protected void KaupaMeira(MouseEvent mouseEvent) {
-        if (ViewSwitcher.getCurrentUser() != null) {
-            if (ViewSwitcher.getCurrentUser().getPeningur() < 100 && counter < 1) {
-                onLoka();
-                counter++;
-            }
-        }
-    }
-
-    private void onLoka() {
-        ButtonType bType = new ButtonType(ILAGI,
-                ButtonBar.ButtonData.OK_DONE);
-        ButtonType hType = new ButtonType(NEI, ButtonBar.ButtonData.CANCEL_CLOSE); // ButtonType er merktur með
-                                                                                   // CANCEL_CLOSE (er enum)
-        Alert a = stofnaAlert(bType, hType);
-        a.showAndWait();
-        if (a.getResult().equals(bType)) {
-            ViewSwitcher.switchTo(View.BUD);
-        }
-    }
-
-    /**
-     * Hjálparfall fyrir onLoka. Býr til Alert dialoginn.
-     * 
-     * @param bILagi Í lagi hnappurinn
-     * @return Alert dialoginn
-     */
-    private Alert stofnaAlert(ButtonType bILagi, ButtonType bHaettaVid) {
-        // Væri hægt að segja Alert.AlertType.CONFIRMATION en þá stjórnum við ekki
-        // útliti hnappanna
-        Alert a = new Alert(Alert.AlertType.WARNING, SPURNING, bILagi, bHaettaVid);
-        a.setHeaderText(TILKYNNING);
-        return a;
+        viewSwitcher.setCurrentUser(null);
+        viewSwitcher.switchTo(View.HEIM);
     }
 
     @FXML
     protected void onKaupa(ActionEvent actionEvent) {
-        ViewSwitcher.switchTo(View.BUD);
+        viewSwitcher.switchTo(View.BUD);
     }
 
     @FXML
     protected void onNyskraning(ActionEvent actionEvent) {
-        ViewSwitcher.switchTo(View.NYSKRANING);
+        viewSwitcher.switchTo(View.NYSKRANING);
     }
 
     @FXML
     protected void onKubburPressed(ActionEvent actionEvent) {
-        // ViewSwitcher.getCurrentUser().setPeningur(ViewSwitcher.getCurrentUser().getPeningur()
-        // - 10);
-        ViewSwitcher.switchTo(View.KUBBUR);
-        // PauseTransition pause = new PauseTransition(Duration.seconds(5));
-        // pause.setOnFinished(event -> ViewSwitcher.switchTo(View.KUBBUR));
-        // pause.play();
+        if (CoinService.hasEnoughCoins(viewSwitcher.getCurrentUser())) {
+            ButtonType bType = new ButtonType(ILAGI, ButtonBar.ButtonData.OK_DONE);
+            ButtonType hType = new ButtonType(NEI, ButtonBar.ButtonData.CANCEL_CLOSE);
+
+            Alert a = new Alert(Alert.AlertType.WARNING, "Þú þarft a.m.k." + CoinService.getKubburCost() + " krónur til að spila. Kaupa meira?", bType, hType);
+            a.setHeaderText("Ekki nægilegt fjármagn");
+
+            a.showAndWait();
+            if (a.getResult().equals(bType)) {
+                viewSwitcher.switchTo(View.BUD);
+            }
+            return;
+        }
+        viewSwitcher.switchTo(View.KUBBUR);
     }
 
     @FXML
     protected void onInnskraning(ActionEvent actionEvent) {
-        ViewSwitcher.switchTo(View.INNSKRANING);
+        viewSwitcher.switchTo(View.INNSKRANING);
     }
 
     @FXML

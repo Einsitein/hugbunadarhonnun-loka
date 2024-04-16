@@ -18,6 +18,8 @@ public class InnskraningController {
     @FXML
     private Label fxWrongPassword;
 
+    private ViewSwitcher viewSwitcher = ViewSwitcher.getInstance();
+
     public void initialize(){
         fxUserID.setStyle("-fx-border-color: black");
         fxPassword.setStyle("-fx-border-color: black");
@@ -26,27 +28,27 @@ public class InnskraningController {
 
     @FXML
     protected void onInnskraning(ActionEvent actionEvent){
-        if (fxUserID.getText().isEmpty() || !ViewSwitcher.notendur.contains(fxUserID.getText())){
+        if (fxUserID.getText().isEmpty() || !viewSwitcher.notendur.contains(fxUserID.getText())){
             fxUserID.setStyle("-fx-border-color: red");
             fxPassword.setStyle("-fx-border-color: red");
             fxNaNUser.setText("Notendanafn og/eða lykilorð er vitlaust");
 
         }
-        else if(!ViewSwitcher.notendur.getUser(fxUserID.getText()).getLykilord().equals(fxPassword.getText())){
+        else if(!viewSwitcher.notendur.getUser(fxUserID.getText()).getLykilord().equals(fxPassword.getText())){
             fxUserID.setStyle("-fx-border-color: red");
             fxPassword.setStyle("-fx-border-color: red");
             fxNaNUser.setText("Notendanafn og/eða lykilorð er vitlaust");
         }
         else {
-            Notandi u = ViewSwitcher.notendur.getUser(fxUserID.getText());
-            ViewSwitcher.setCurrentUser(u);
-            ViewSwitcher.switchTo(View.HEIM);
+            Notandi u = viewSwitcher.notendur.getUser(fxUserID.getText());
+            viewSwitcher.setCurrentUser(u);
+            viewSwitcher.switchTo(View.HEIM);
         }
     }
 
     @FXML
     protected void onHeim(ActionEvent actionEvent){
-        ViewSwitcher.switchTo(View.HEIM);
+        viewSwitcher.switchTo(View.HEIM);
     }
 
     @FXML
