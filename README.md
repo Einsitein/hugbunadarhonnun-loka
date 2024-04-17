@@ -15,7 +15,7 @@ mvn exec:java
 
 ## Git
 
-The project is hosted on GitHub and it was regularly pushed to the repository, it uses Github Actions to run the tests on each push. Gitignore is used to ignore .vscode folder.
+The project is hosted on GitHub and it was regularly pushed to the repository, it uses Github Actions to run the tests on each push. Gitignore is used to ignore .vscode folder and target folder.
 
 ## Maven
 
@@ -62,6 +62,10 @@ I often refactored the code to make it more readable and maintainable.
 You can package the program by running the create_package.bat file.
 
 This will create a package file in the `target` directory. You can run the program without IDE or Maven by running the run_app.bat file.
+
+After running the create_package file and mvn site you could share the target folder with others and they could run the program by running the run_app.bat file and view the reports by running the open_reports.bat file.
+
+The app-image.zip file also can be used to run the program without IDE or Maven without running the create_package file.
 
 ## Documentation
 
