@@ -1,1 +1,0 @@
-moduleSearchIndex = [{"l":"hi.verkefni.vidmot"}];updateSearchResults();

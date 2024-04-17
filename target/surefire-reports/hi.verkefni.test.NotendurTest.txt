@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: hi.verkefni.test.NotendurTest
--------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.043 s - in hi.verkefni.test.NotendurTest

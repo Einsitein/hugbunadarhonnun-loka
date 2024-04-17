@@ -59,17 +59,9 @@ I often refactored the code to make it more readable and maintainable.
 
 ## Packaging the Program
 
-You can package the program into a JAR file using the following command:
-
-```bash
-mvn package
-```
+You can package the program by running the create_package.bat file.
 
 This will create a package file in the `target` directory. You can run the program without IDE or Maven by running the run_app.bat file.
-
-```bash
-java -jar target/vidmot-1.0-SNAPSHOT.jar
-```
 
 ## Documentation
 
