@@ -1,0 +1,4 @@
+--patch-module
+hi.verkefni.vidmot=_
+--add-reads
+hi.verkefni.vidmot=ALL-UNNAMED

@@ -10,10 +10,14 @@
     <description>Lokaverkefni í Hugbúnaðarhönnun og forritun</description>
     <licenses>
         <license>
-            <name>MIT</name>
-            <url>https://opensource.org/licenses/MIT</url>
+            <name>MIT License</name>
+            <url>LICENSE</url>
         </license>
     </licenses>
+    <organization>
+        <name>University of Iceland</name>
+        <url>https://www.hi.is</url>
+    </organization>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.10.0</junit.version>
@@ -79,8 +83,40 @@
                 <version>3.0.0</version>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>hi.verkefni.vidmot.KubburApplication</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.2</version>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>hi.verkefni.vidmot.KubburApplication</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-install-plugin</artifactId>
@@ -105,20 +141,42 @@
                 <version>0.0.8</version>
                 <executions>
                     <execution>
-                        <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>hi.verkefni.vidmot/hi.verkefni.vidmot.KubburApplication</mainClass>
                             <launcher>app</launcher>
-                            <jlinkZipName>app</jlinkZipName>
-                            <jlinkImageName>app</jlinkImageName>
+                            <jlinkImageName>app-image</jlinkImageName>
+                            <jlinkZipName>app-image</jlinkZipName>
                             <noManPages>true</noManPages>
                             <stripDebug>true</stripDebug>
                             <noHeaderFiles>true</noHeaderFiles>
+                            <compress>2</compress>
+                            <jlinkOptions>
+                                <jlinkOption>--strip-debug</jlinkOption>
+                                <jlinkOption>--compress=2</jlinkOption>
+                                <jlinkOption>--no-header-files</jlinkOption>
+                                <jlinkOption>--no-man-pages</jlinkOption>
+                            </jlinkOptions>
                         </configuration>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jlink</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <excludePackageNames>hi.verkefni.test</excludePackageNames>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>

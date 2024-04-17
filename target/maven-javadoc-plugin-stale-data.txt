@@ -1,0 +1,63 @@
+@options
+@argfile
+--class-path
+'C:/Users/Einsi/.m2/repository/org/openjfx/javafx-controls/21/javafx-controls-21.jar;C:/Users/Einsi/.m2/repository/org/openjfx/javafx-graphics/21/javafx-graphics-21.jar;C:/Users/Einsi/.m2/repository/org/openjfx/javafx-base/21/javafx-base-21.jar;C:/Users/Einsi/.m2/repository/org/openjfx/javafx-fxml/21/javafx-fxml-21.jar;C:/Users/Einsi/.m2/repository/org/openjfx/javafx-media/21/javafx-media-21.jar;C:/Users/Einsi/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.0/junit-jupiter-api-5.10.0.jar;C:/Users/Einsi/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar;C:/Users/Einsi/.m2/repository/org/junit/platform/junit-platform-commons/1.10.0/junit-platform-commons-1.10.0.jar;C:/Users/Einsi/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar;C:/Users/Einsi/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.0/junit-jupiter-engine-5.10.0.jar;C:/Users/Einsi/.m2/repository/org/junit/platform/junit-platform-engine/1.10.0/junit-platform-engine-1.10.0.jar'
+--module-path
+'C:/Users/Einsi/OneDrive/Documents/HÍ/önn 4/hugbúnaðarhönnun/lokaverkefni/target/classes;C:/Users/Einsi/.m2/repository/org/openjfx/javafx-base/21/javafx-base-21-win.jar;C:/Users/Einsi/.m2/repository/org/openjfx/javafx-fxml/21/javafx-fxml-21-win.jar;C:/Users/Einsi/.m2/repository/org/openjfx/javafx-media/21/javafx-media-21-win.jar;C:/Users/Einsi/.m2/repository/org/openjfx/javafx-controls/21/javafx-controls-21-win.jar;C:/Users/Einsi/.m2/repository/org/openjfx/javafx-graphics/21/javafx-graphics-21-win.jar'
+--patch-module
+hi.verkefni.vidmot='C:/Users/Einsi/OneDrive/Documents/HÍ/önn 4/hugbúnaðarhönnun/lokaverkefni/src/main/java;C:/Users/Einsi/OneDrive/Documents/HÍ/önn 4/hugbúnaðarhönnun/lokaverkefni/target/generated-sources/annotations'
+-encoding
+'UTF-8'
+-protected
+--module-source-path
+'C:/Users/Einsi/OneDrive/Documents/HÍ/önn 4/hugbúnaðarhönnun/lokaverkefni/target/site/apidocs/src'
+-author
+-bottom
+'Copyright &#169; 2024 <a href="https://www.hi.is">University of Iceland</a>. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/Einsi/OneDrive/Documents/HÍ/önn 4/hugbúnaðarhönnun/lokaverkefni/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Lokaverkefni HBV202G 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'Lokaverkefni HBV202G 1.0-SNAPSHOT API'
+'C:/Users/Einsi/OneDrive/Documents/HÍ/önn 4/hugbúnaðarhönnun/lokaverkefni/src/main/java/hi/verkefni/vidmot/BudController.java'
+'C:/Users/Einsi/OneDrive/Documents/HÍ/önn 4/hugbúnaðarhönnun/lokaverkefni/src/main/java/hi/verkefni/vidmot/CoinObserver.java'
+'C:/Users/Einsi/OneDrive/Documents/HÍ/önn 4/hugbúnaðarhönnun/lokaverkefni/src/main/java/hi/verkefni/vidmot/HeimaController.java'
+'C:/Users/Einsi/OneDrive/Documents/HÍ/önn 4/hugbúnaðarhönnun/lokaverkefni/src/main/java/hi/verkefni/vidmot/InnskraningController.java'
+'C:/Users/Einsi/OneDrive/Documents/HÍ/önn 4/hugbúnaðarhönnun/lokaverkefni/src/main/java/hi/verkefni/vidmot/KubburApplication.java'
+'C:/Users/Einsi/OneDrive/Documents/HÍ/önn 4/hugbúnaðarhönnun/lokaverkefni/src/main/java/hi/verkefni/vidmot/KubburController.java'
+'C:/Users/Einsi/OneDrive/Documents/HÍ/önn 4/hugbúnaðarhönnun/lokaverkefni/src/main/java/hi/verkefni/vidmot/NyskraningController.java'
+'C:/Users/Einsi/OneDrive/Documents/HÍ/önn 4/hugbúnaðarhönnun/lokaverkefni/src/main/java/hi/verkefni/vidmot/View.java'
+'C:/Users/Einsi/OneDrive/Documents/HÍ/önn 4/hugbúnaðarhönnun/lokaverkefni/src/main/java/hi/verkefni/vidmot/ViewSwitcher.java'
+'C:/Users/Einsi/OneDrive/Documents/HÍ/önn 4/hugbúnaðarhönnun/lokaverkefni/src/main/java/hi/verkefni/vinnsla/CoinService.java'
+'C:/Users/Einsi/OneDrive/Documents/HÍ/önn 4/hugbúnaðarhönnun/lokaverkefni/src/main/java/hi/verkefni/vinnsla/Kubbur.java'
+'C:/Users/Einsi/OneDrive/Documents/HÍ/önn 4/hugbúnaðarhönnun/lokaverkefni/src/main/java/hi/verkefni/vinnsla/Notandi.java'
+'C:/Users/Einsi/OneDrive/Documents/HÍ/önn 4/hugbúnaðarhönnun/lokaverkefni/src/main/java/hi/verkefni/vinnsla/Notendur.java'
+'C:/Users/Einsi/OneDrive/Documents/HÍ/önn 4/hugbúnaðarhönnun/lokaverkefni/src/main/java/hi/verkefni/vinnsla/Stykki.java'
+'C:/Users/Einsi/OneDrive/Documents/HÍ/önn 4/hugbúnaðarhönnun/lokaverkefni/src/main/java/hi/verkefni/vinnsla/UserFactory.java'
+'C:/Users/Einsi/OneDrive/Documents/HÍ/önn 4/hugbúnaðarhönnun/lokaverkefni/src/main/java/module-info.java'
+C:\Users\Einsi\OneDrive\Documents\HÍ\önn 4\hugbúnaðarhönnun\lokaverkefni\target\site\apidocs\allclasses-index.html = 1713313937134
+C:\Users\Einsi\OneDrive\Documents\HÍ\önn 4\hugbúnaðarhönnun\lokaverkefni\target\site\apidocs\allpackages-index.html = 1713313937152
+C:\Users\Einsi\OneDrive\Documents\HÍ\önn 4\hugbúnaðarhönnun\lokaverkefni\target\site\apidocs\copy.svg = 1713313937446
+C:\Users\Einsi\OneDrive\Documents\HÍ\önn 4\hugbúnaðarhönnun\lokaverkefni\target\site\apidocs\element-list = 1713313936082
+C:\Users\Einsi\OneDrive\Documents\HÍ\önn 4\hugbúnaðarhönnun\lokaverkefni\target\site\apidocs\help-doc.html = 1713313937413
+C:\Users\Einsi\OneDrive\Documents\HÍ\önn 4\hugbúnaðarhönnun\lokaverkefni\target\site\apidocs\index-all.html = 1713313937355
+C:\Users\Einsi\OneDrive\Documents\HÍ\önn 4\hugbúnaðarhönnun\lokaverkefni\target\site\apidocs\index.html = 1713313937392
+C:\Users\Einsi\OneDrive\Documents\HÍ\önn 4\hugbúnaðarhönnun\lokaverkefni\target\site\apidocs\link.svg = 1713313937455
+C:\Users\Einsi\OneDrive\Documents\HÍ\önn 4\hugbúnaðarhönnun\lokaverkefni\target\site\apidocs\member-search-index.js = 1713313937173
+C:\Users\Einsi\OneDrive\Documents\HÍ\önn 4\hugbúnaðarhönnun\lokaverkefni\target\site\apidocs\module-search-index.js = 1713313937159
+C:\Users\Einsi\OneDrive\Documents\HÍ\önn 4\hugbúnaðarhönnun\lokaverkefni\target\site\apidocs\overview-tree.html = 1713313936961
+C:\Users\Einsi\OneDrive\Documents\HÍ\önn 4\hugbúnaðarhönnun\lokaverkefni\target\site\apidocs\package-search-index.js = 1713313937163
+C:\Users\Einsi\OneDrive\Documents\HÍ\önn 4\hugbúnaðarhönnun\lokaverkefni\target\site\apidocs\script.js = 1713313937435
+C:\Users\Einsi\OneDrive\Documents\HÍ\önn 4\hugbúnaðarhönnun\lokaverkefni\target\site\apidocs\search-page.js = 1713313937490
+C:\Users\Einsi\OneDrive\Documents\HÍ\önn 4\hugbúnaðarhönnun\lokaverkefni\target\site\apidocs\search.html = 1713313937377
+C:\Users\Einsi\OneDrive\Documents\HÍ\önn 4\hugbúnaðarhönnun\lokaverkefni\target\site\apidocs\search.js = 1713313937476
+C:\Users\Einsi\OneDrive\Documents\HÍ\önn 4\hugbúnaðarhönnun\lokaverkefni\target\site\apidocs\stylesheet.css = 1713313937426
+C:\Users\Einsi\OneDrive\Documents\HÍ\önn 4\hugbúnaðarhönnun\lokaverkefni\target\site\apidocs\tag-search-index.js = 1713313937176
+C:\Users\Einsi\OneDrive\Documents\HÍ\önn 4\hugbúnaðarhönnun\lokaverkefni\target\site\apidocs\type-search-index.js = 1713313937168

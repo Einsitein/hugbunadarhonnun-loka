@@ -16,6 +16,12 @@ import java.io.IOException;
 public class KubburApplication extends Application {
     private ViewSwitcher viewSwitcher = ViewSwitcher.getInstance();
 
+    /**
+     * Startar forritinu og sýnir Heim viewið.
+     * 
+     * @param stage sviðið sem að forritið keyrir á
+     * @throws IOException ef villa kemur upp
+     */
     @Override
     public void start(Stage stage) throws IOException {
         var scene = new Scene(new Pane());
@@ -24,7 +30,12 @@ public class KubburApplication extends Application {
         stage.setScene(scene);
         stage.show();
     }
-
+    
+    /**
+     * Main fallið sem að keyrir forritið.
+     * 
+     * @param args fylki af strengjum
+     */
     public static void main(String[] args) {
         launch(args);
     }

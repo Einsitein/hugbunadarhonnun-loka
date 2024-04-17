@@ -1,6 +1,5 @@
 package hi.verkefni.vidmot;
 
-import hi.verkefni.vinnsla.Notandi;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -8,9 +7,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Alert;
 import hi.verkefni.vinnsla.CoinService;
 
+/**
+ * The controller class for the Heima view.
+ * This class handles the logic and event handling for the UI elements in the
+ * Heima view.
+ */
 public class HeimaController {
-    private Notandi user;
-
     @FXML
     private Label fxUser;
     @FXML
@@ -28,13 +30,13 @@ public class HeimaController {
 
     private ViewSwitcher viewSwitcher = ViewSwitcher.getInstance();
 
-    private static final String SPURNING = "Má bjóða þér að kaupa meira?";
-    private static final String TILKYNNING = "Peningaupphæðin þín er orðin ansi lág...";
     private static final String ILAGI = "Ja!";
     private static final String NEI = "nei";
 
-    private int counter = 0;
-
+    /**
+     * Initializes the Heima view.
+     * This method is called automatically when the view is loaded.
+     */
     public void initialize() {
         fxKubbur.getStyleClass().add("kubburOut");
         if (viewSwitcher.getCurrentUser() != null) {
@@ -72,11 +74,13 @@ public class HeimaController {
 
     @FXML
     protected void onKubburPressed(ActionEvent actionEvent) {
-        if (CoinService.hasEnoughCoins(viewSwitcher.getCurrentUser())) {
+        if (!CoinService.hasEnoughCoins(viewSwitcher.getCurrentUser())) {
             ButtonType bType = new ButtonType(ILAGI, ButtonBar.ButtonData.OK_DONE);
             ButtonType hType = new ButtonType(NEI, ButtonBar.ButtonData.CANCEL_CLOSE);
 
-            Alert a = new Alert(Alert.AlertType.WARNING, "Þú þarft a.m.k." + CoinService.getKubburCost() + " krónur til að spila. Kaupa meira?", bType, hType);
+            Alert a = new Alert(Alert.AlertType.WARNING,
+                    "Þú þarft a.m.k." + CoinService.getKubburCost() + " krónur til að spila. Kaupa meira?", bType,
+                    hType);
             a.setHeaderText("Ekki nægilegt fjármagn");
 
             a.showAndWait();

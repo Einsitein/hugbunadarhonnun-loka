@@ -7,6 +7,11 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
+/**
+ * The controller class for the Nyskraning view.
+ * This class handles the
+ * logic and event handling for the UI elements in the Nyskraning view.
+ */
 public class NyskraningController {
 
     @FXML
@@ -22,6 +27,10 @@ public class NyskraningController {
 
     private ViewSwitcher viewSwitcher = ViewSwitcher.getInstance();
 
+    /**
+     * Initializes the Nyskraning view.
+     * This method is called automatically when the view is loaded.
+     */
     public void initialize() {
         fxUserID.setStyle("-fx-border-color: black");
         fxPassword.setStyle("-fx-border-color: black");

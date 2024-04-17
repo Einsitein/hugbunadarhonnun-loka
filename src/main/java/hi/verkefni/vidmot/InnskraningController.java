@@ -8,6 +8,11 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
+/**
+ * The controller class for the Innskraning view.
+ * This class handles the
+ * logic and event handling for the UI elements in the Innskraning view.
+ */
 public class InnskraningController {
     @FXML
     private TextField fxUserID;
@@ -20,6 +25,10 @@ public class InnskraningController {
 
     private ViewSwitcher viewSwitcher = ViewSwitcher.getInstance();
 
+    /**
+     * Initializes the Innskraning view.
+     * This method is called automatically when the view is loaded.
+     */
     public void initialize(){
         fxUserID.setStyle("-fx-border-color: black");
         fxPassword.setStyle("-fx-border-color: black");
